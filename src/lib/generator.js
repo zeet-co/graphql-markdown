@@ -34,6 +34,7 @@ module.exports = async function generateDocFromSchema({
 
   if (hasChanged) {
     const rootTypes = getSchemaMap(schema);
+    delete rootTypes.directives;
     const { group } = new GroupInfo(rootTypes, groupByDirective);
     const renderer = new Renderer(
       new Printer(schema, baseURL, linkRoot, group),
